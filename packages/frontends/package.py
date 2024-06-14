@@ -12,23 +12,24 @@ def sanitize_environments(env, *vars):
         env.prune_duplicate_paths(var)
         env.deprioritize_system_paths(var)
         
-class OtsdaqMu2eTracker(CMakePackage):
+class Frontends(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://mu2e.fnal.gov"
-    git = "https://github.com/Mu2e/otsdaq_mu2e_tracker.git"
-    url = "https://github.com/Mu2e/otsdaq_mu2e_tracker/archive/refs/tags/v1_04_00.tar.gz"
+    homepage = "https://github.com/pavel1murat/frontends/"
+    git = "https://github.com/pavel1murat/frontends.git"
+    url = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"
 
-    maintainers("eflumerf", "rrivera747")
+    maintainers("pavel1murat")
 
     license("BSD")
 
-    version("develop", branch="develop", get_full_repo=True)
-    version("v3_01_00", commit="e7b7abb733e00e8a97f31f02f87746fb29c4949e")
-    version("v3_00_00", commit="a93e0362837d38271002a5c700f7d140d115773e")
+    version("main", branch="main", get_full_repo=True)
+#    version("v3_01_00", commit="e7b7abb733e00e8a97f31f02f87746fb29c4949e")
+    version("v3_01_00", branch="main", get_full_repo=True)
+    version("v3_00_00", branch="main", get_full_repo=True)
 
     def url_for_version(self, version):
-        url = "https://github.com/Mu2e/otsdaq_mu2e_tracker/archive/refs/tags/{0}.tar.gz"
+        url = "https://github.com/pavel1murat/frontends/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
 
     variant(
@@ -39,10 +40,9 @@ class OtsdaqMu2eTracker(CMakePackage):
         description="Use the specified C++ standard when building.",
     )
 
-    depends_on("otsdaq-mu2e")
-    depends_on("Offline")
-    depends_on("artdaq-core-demo")
-    depends_on("cetmodules", type="build")
+    depends_on("postgresql")
+#    depends_on("otsdaq-mu2e")
+#    depends_on("cetmodules", type="build")
 
     def cmake_args(self):
         args = [

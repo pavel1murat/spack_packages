@@ -13,19 +13,20 @@ def sanitize_environments(env, *vars):
         env.deprioritize_system_paths(var)
         
 class Midas(CMakePackage):
-    """FIXME: Put a proper description of your package here."""
+    """Maximum Integrated Data Aquisition System by Stefan Ritt."""
 
     homepage = "https://bitbucket.org/tmidas/midas"
     git = "https://bitbucket.org/tmidas/midas.git"
-    url = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"
-
-    maintainers("pavel1murat")
+    url = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"  # not sure what it is...
 
     license("BSD")
 
-#    version("main", branch="main", get_full_repo=True)
+    #    version("main", branch="main", get_full_repo=True)
+    #    version("v3_01_00", commit="e7b7abb733e00e8a97f31f02f87746fb29c4949e")
+
     version("develop", branch="develop", get_full_repo=True, submodules=True)
-#    version("v3_01_00", commit="e7b7abb733e00e8a97f31f02f87746fb29c4949e")
+    # patch("alpgen-214.patch", when="recipe=cms")
+    patch("midas-001.patch")
 
     def url_for_version(self, version):
         url = "https://bitbucket.org/tmidas/midas/archive/refs/tags/{0}.tar.gz"
@@ -43,7 +44,7 @@ class Midas(CMakePackage):
 #    depends_on("postgresql")
 #    depends_on("messagefacility")
 #    depends_on("sqlite")
-#    depends_on("otsdaq-mu2e")
+#    depends_on("root+http")
 
     def cmake_args(self):
         args = [

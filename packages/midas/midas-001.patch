@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c6a4109..f2ef0bab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -642,6 +642,8 @@ else()
+       include/musbstd.h
+       include/mvmestd.h
+       include/odbxx.h
++# P.Murat
++      include/tinyexpr.h
+       include/tmfe.h
+       include/tmfe_rev0.h
+       mxml/mxml.h
+@@ -657,6 +659,10 @@ install(TARGETS midas midas-shared midas-c-compat mfe mana rmana
+         
+ install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib)
+ 
++# P.Murat:
++install(DIRECTORY drivers       DESTINATION .     )
++install(DIRECTORY resources     DESTINATION .     )
++install(DIRECTORY python/midas  DESTINATION python)
+ #####################################################################
+ # generate git revision file
+ #####################################################################

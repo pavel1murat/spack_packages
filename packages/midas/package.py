@@ -6,7 +6,6 @@
 from spack.package import *
 import os
 
-
 def sanitize_environments(env, *vars):
     for var in vars:
         env.prune_duplicate_paths(var)
@@ -40,20 +39,25 @@ class Midas(CMakePackage):
         description="Use the specified C++ standard when building.",
     )
 
+    variant("sqlite", default=False, description="Enable SQLite support",)
+
+    depends_on("sqlite", when="+sqlite")
+
 #    depends_on("cetmodules", type="build")
 #    depends_on("postgresql")
 #    depends_on("messagefacility")
-#    depends_on("sqlite")
 #    depends_on("root+http")
-
+#------------------------------------------------------------------------------
+# P.Murat: leave it as is for now, as I only need to build w/o sqlite, everything
+#          else is OK
+#------------------------------------------------------------------------------
     def cmake_args(self):
-        args = [
-            self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-        ]
+        args = [ self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"), ]
         if os.path.exists("CMakePresets.cmake"):
             args.extend(["--preset", "default"])
-        else:
-            self.define("artdaq_core_OLD_STYLE_CONFIG_VARS", True)
+            
+        args.append('-DNO_SQLITE={0}'.format('FALSE' if "+sqlite" in self.spec else 'TRUE'))
+            
         return args
 
     def setup_run_environment(self, env):

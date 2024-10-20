@@ -23,7 +23,7 @@ class Midas(CMakePackage):
     #    version("main", branch="main", get_full_repo=True)
     #    version("v3_01_00", commit="e7b7abb733e00e8a97f31f02f87746fb29c4949e")
 
-    version("develop", branch="develop", get_full_repo=True, submodules=True)
+    version("develop", branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
     # patch("alpgen-214.patch", when="recipe=cms")
     patch("midas-001.patch")
 
@@ -40,13 +40,15 @@ class Midas(CMakePackage):
     )
 
     variant("sqlite", default=False, description="Enable SQLite support",)
+    variant("opencv", default=False, description="Enable OPENCV support",)
 
     depends_on("sqlite", when="+sqlite")
+    depends_on("opencv", when="+opencv")
 
 #    depends_on("cetmodules", type="build")
 #    depends_on("postgresql")
 #    depends_on("messagefacility")
-#    depends_on("root+http")
+    depends_on("root+http")
 #------------------------------------------------------------------------------
 # P.Murat: leave it as is for now, as I only need to build w/o sqlite, everything
 #          else is OK
@@ -57,6 +59,7 @@ class Midas(CMakePackage):
             args.extend(["--preset", "default"])
             
         args.append('-DNO_SQLITE={0}'.format('FALSE' if "+sqlite" in self.spec else 'TRUE'))
+        args.append('-DNO_OPENCV={0}'.format('FALSE' if "+opencv" in self.spec else 'TRUE'))
             
         return args
 

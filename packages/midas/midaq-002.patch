@@ -1,0 +1,11 @@
+diff --git a/midasio.cxx b/midasio.cxx
+index 1279daa..11365b4 100644
+--- a/midasio.cxx
++++ b/midasio.cxx
+@@ -10,6 +10,7 @@
+ #include <signal.h> // signal()
+ 
+ #include <string>
++#include <ctime>
+ 
+ #undef NDEBUG // working assert() is required by this program. K.O.

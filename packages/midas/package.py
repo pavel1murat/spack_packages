@@ -25,9 +25,11 @@ class Midas(CMakePackage):
 #------------------------------------------------------------------------------
 # P.Murat: make sure we dont' update MIDAS every time
 #------------------------------------------------------------------------------
-    version("develop", branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
+    version("develop" , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
+    version("3.01.00" , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
     # patch("alpgen-214.patch", when="recipe=cms")
-    patch("midas-001.patch")
+    # patch("midas-001.patch")
+    patch("midas-002.patch")
 
     def url_for_version(self, version):
         url = "https://bitbucket.org/tmidas/midas/archive/refs/tags/{0}.tar.gz"

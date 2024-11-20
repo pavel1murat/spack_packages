@@ -22,3 +22,14 @@ index 3c6a4109..f2ef0bab 100644
  #####################################################################
  # generate git revision file
  #####################################################################
+diff --git a/midasio.cxx b/midasio.cxx
+index 1279daa..11365b4 100644
+--- a/midasio/midasio.cxx
++++ b/midasio/midasio.cxx
+@@ -10,6 +10,7 @@
+ #include <signal.h> // signal()
+ 
+ #include <string>
++#include <ctime>
+ 
+ #undef NDEBUG // working assert() is required by this program. K.O.

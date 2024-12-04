@@ -11,12 +11,12 @@ def sanitize_environments(env, *vars):
         env.prune_duplicate_paths(var)
         env.deprioritize_system_paths(var)
         
-class Elog(CMakePackage):
-    """Maximum Integrated Data Aquisition System by Stefan Ritt."""
+class Stntuple(CMakePackage):
+    """Stntuple by Pavel Murat"""
 
-    homepage = "https://bitbucket.org/ritt/elog"
-    git = "https://bitbucket.org/ritt/elog"
-    url = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"  # not sure what it is...
+    homepage = "https://github.com/Mu2e/Stntuple"
+    git      = "https://github.com/Mu2e/Stntuple"
+    url      = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"  # not sure what it is...
 
     license("BSD")
 
@@ -26,11 +26,10 @@ class Elog(CMakePackage):
 # P.Murat: make sure we dont' update ELOG every time
 # elog-001.patch: fix (kludge) the installation directory
 #------------------------------------------------------------------------------
-    version("master" , branch="master", get_full_repo=True, submodules=True)
-    version("2024-09-25" , branch="master", commit="6ee1005",get_full_repo=True, submodules=True)
-    patch("elog-001.patch")
+    version("main" , branch="main", get_full_repo=True, submodules=True)
+    # patch("elog-001.patch")
     def url_for_version(self, version):
-        url = "https://bitbucket.org/tmidas/midas/archive/refs/tags/{0}.tar.gz"
+        url = "https://github.com/Mu2e/Stntuple/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
 
     variant(

@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e43d8fb..2a3d0a07 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,8 @@ option(USE_LDAP "Use LDAP library for authentication" OFF)
+ option(USE_PAM  "Use PAM library for authentication" OFF)
+ 
+ # install directory
+-set(CMAKE_INSTALL_PREFIX /usr/local)
++SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++# set(CMAKE_INSTALL_PREFIX /usr/local)
+ set(ELOGDIR  ${CMAKE_INSTALL_PREFIX}/elog)
+ set(RCDIR    /etc/rc.d/init.d)
+ set(SRVDIR   /usr/lib/systemd/system)

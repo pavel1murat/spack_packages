@@ -46,6 +46,7 @@ class Frontends(CMakePackage):
     depends_on("messagefacility")
     depends_on("sqlite")
     depends_on("midas")
+    depends_on("tfm")
 
     def cmake_args(self):
         args = [

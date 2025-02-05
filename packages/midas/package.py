@@ -26,9 +26,11 @@ class Midas(CMakePackage):
 # P.Murat: make sure we dont' update MIDAS every time
 # patch_001 corresponds to commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09"
 # patch_002 - to something more recent (development?)
+# for branch "develop" switch to a fork
 #------------------------------------------------------------------------------
-    version("develop" , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
-    version("3.01.00" , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
+    version("develop"   , branch="develop", get_full_repo=True, submodules=True)
+    version("2025-01-29", branch="develop", commit="af7da46b37347f8cc0f6ad6fca183cb3305339ef",get_full_repo=True, submodules=True)
+    version("3.01.00"   , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
     # patch("alpgen-214.patch", when="recipe=cms")
     patch("midas-001.patch")
     # patch("midas-002.patch")

@@ -29,10 +29,13 @@ class Midas(CMakePackage):
 # for branch "develop" switch to a fork
 #------------------------------------------------------------------------------
     version("develop"   , branch="develop", get_full_repo=True, submodules=True)
+# 2025-02-06 : a snapshot to demonstrate spack confusion with finding the right include files
+    version("2025-02-06", branch="develop", commit="85946c9476543efd8a25772df35c0e6956e8b68c",get_full_repo=True, submodules=True)
     version("2025-01-29", branch="develop", commit="af7da46b37347f8cc0f6ad6fca183cb3305339ef",get_full_repo=True, submodules=True)
     version("3.01.00"   , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
     # patch("alpgen-214.patch", when="recipe=cms")
-    patch("midas-001.patch")
+    patch("midas-2025-02-06.patch",when="@2025-02-06")
+    patch("midas-001.patch",when="@3.01.00")
     # patch("midas-002.patch")
 
     def url_for_version(self, version):

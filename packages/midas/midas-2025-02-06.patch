@@ -1,0 +1,42 @@
+index 12c31a34..062ffdd6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -674,24 +674,27 @@ add_dependencies(objlib git_revision_h)
+ #####################################################################
+ # sub-modules
+ #####################################################################
+-add_subdirectory(mscb)
+-add_library(midas::mscb ALIAS mscb)
+-target_include_directories(mscb PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/mscb>)
+-install(
+-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/mscb/include/
+-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mscb/
+-    FILES_MATCHING PATTERN *.h
+-)
++# add_subdirectory(mscb)
++# add_library(midas::mscb ALIAS mscb)
++# 
++# # message(STATUS "TOP: INTERFACE_INCLUDE_DIRECTORIES: ${INTERFACE_INCLUDE_DIRECTORIES}")
++# 
++# target_include_directories(mscb PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/mscb>)
++# install(
++#     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/mscb/include/
++#     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mscb/
++#     FILES_MATCHING PATTERN *.h
++# )
+ add_subdirectory(manalyzer)
+ 
+-install(TARGETS mscb DESTINATION lib EXPORT midas-targets)
++#install(TARGETS mscb DESTINATION lib EXPORT midas-targets)
+ 
+ #####################################################################
+ # sub-projects
+ #####################################################################
+-add_subdirectory(drivers)
++# add_subdirectory(drivers)
+ add_subdirectory(progs)
+-add_subdirectory(examples)
++# add_subdirectory(examples)
+ 
+ #####################################################################
+ # generator for find_package(MIDAS)

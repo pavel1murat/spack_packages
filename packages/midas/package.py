@@ -26,17 +26,16 @@ class Midas(CMakePackage):
 # P.Murat: make sure we dont' update MIDAS every time
 # patch_001 corresponds to commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09"
 # patch_002 - to something more recent (development?)
-# for branch "develop" switch to a fork
+# midas-2025-04-01.patch : make sure MIDAS compiles with the spack-preferred compiler
 #------------------------------------------------------------------------------
     version("develop"   , branch="develop", get_full_repo=True, submodules=True)
 # 2025-02-06 : a snapshot to demonstrate spack confusion with finding the right include files
+    version("2025-04-01", branch="develop", commit="13ad919a2d77c5af0f53120f615001d07a14766e",get_full_repo=True, submodules=True)
     version("2025-02-06", branch="develop", commit="85946c9476543efd8a25772df35c0e6956e8b68c",get_full_repo=True, submodules=True)
-    version("2025-01-29", branch="develop", commit="af7da46b37347f8cc0f6ad6fca183cb3305339ef",get_full_repo=True, submodules=True)
     version("3.01.00"   , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
-    # patch("alpgen-214.patch", when="recipe=cms")
+    patch("midas-2025-04-01.patch",when="@2025-04-01")
     patch("midas-2025-02-06.patch",when="@2025-02-06")
     patch("midas-001.patch",when="@3.01.00")
-    # patch("midas-002.patch")
 
     def url_for_version(self, version):
         url = "https://bitbucket.org/tmidas/midas/archive/refs/tags/{0}.tar.gz"
@@ -58,8 +57,7 @@ class Midas(CMakePackage):
     depends_on("postgresql", when="+postgresql")
     depends_on("opencv"    , when="+opencv")
 
-#    depends_on("cetmodules", type="build")
-    depends_on("root+http")
+#    depends_on("root+http")
 #------------------------------------------------------------------------------
 # P.Murat: leave it as is for now, as I only need to build w/o sqlite, everything
 #          else is OK
@@ -90,5 +88,5 @@ class Midas(CMakePackage):
         env.prepend_path("CET_PLUGIN_PATH", prefix.lib)
         # Ensure we can find fhicl files
         env.prepend_path("FHICL_FILE_PATH", prefix + "/fcl")
-        # Cleaup.
+        # Cleanup.
         sanitize_environments(env, "CET_PLUGIN_PATH", "FHICL_FILE_PATH")

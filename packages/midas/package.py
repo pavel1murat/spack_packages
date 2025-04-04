@@ -54,6 +54,7 @@ class Midas(CMakePackage):
     variant("postgresql", default=False, description="Enable Pgsql  support",)
 
     depends_on("sqlite"    , when="+sqlite")
+    depends_on("openldap"  , when="+sqlite")
     depends_on("postgresql", when="+postgresql")
     depends_on("opencv"    , when="+opencv")
 

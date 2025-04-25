@@ -16,8 +16,8 @@ class Daqana(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
     homepage = "https://github.com/pavel1murat/daqana/"
-    git = "https://github.com/pavel1murat/frontends.git"
-    url = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"
+    git = "https://github.com/pavel1murat/daqana.git"
+    url = "https://github.com/pavel1murat/daqana/archive/refs/tags/v1_04_00.tar.gz"
 
     maintainers("pavel1murat")
 
@@ -29,7 +29,7 @@ class Daqana(CMakePackage):
     version("v3_00_00", branch="main", get_full_repo=True)
 
     def url_for_version(self, version):
-        url = "https://github.com/pavel1murat/frontends/archive/refs/tags/{0}.tar.gz"
+        url = "https://github.com/pavel1murat/daqana/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
 
     variant(

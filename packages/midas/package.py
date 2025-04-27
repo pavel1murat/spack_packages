@@ -30,9 +30,11 @@ class Midas(CMakePackage):
 #------------------------------------------------------------------------------
     version("develop"   , branch="develop", get_full_repo=True, submodules=True)
 # 2025-02-06 : a snapshot to demonstrate spack confusion with finding the right include files
+    version("2025-04-25", branch="develop", commit="a0f1d9307d1aa9cb55f10542e80bc82cefcc700e",get_full_repo=True, submodules=True)
     version("2025-04-01", branch="develop", commit="13ad919a2d77c5af0f53120f615001d07a14766e",get_full_repo=True, submodules=True)
     version("2025-02-06", branch="develop", commit="85946c9476543efd8a25772df35c0e6956e8b68c",get_full_repo=True, submodules=True)
     version("3.01.00"   , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
+    patch("midas-2025-04-25.patch",when="@2025-04-25")
     patch("midas-2025-04-01.patch",when="@2025-04-01")
     patch("midas-2025-02-06.patch",when="@2025-02-06")
     patch("midas-001.patch",when="@3.01.00")

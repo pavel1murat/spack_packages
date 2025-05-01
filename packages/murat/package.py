@@ -11,11 +11,11 @@ def sanitize_environments(env, *vars):
         env.prune_duplicate_paths(var)
         env.deprioritize_system_paths(var)
         
-class Stntuple(CMakePackage):
-    """Stntuple by Pavel Murat"""
+class Murat(CMakePackage):
+    """murat by Pavel Murat"""
 
-    homepage = "https://github.com/Mu2e/Stntuple"
-    git      = "https://github.com/Mu2e/Stntuple"
+    homepage = "https://github.com/pavel1murat/murat"
+    git      = "https://github.com/pavel1murat/murat"
     url      = "https://github.com/pavel1murat/frontends/archive/refs/tags/v1_04_00.tar.gz"  # not sure what it is...
 
     license("BSD")
@@ -26,11 +26,10 @@ class Stntuple(CMakePackage):
 # P.Murat: make sure we dont' update ELOG every time
 # elog-001.patch: fix (kludge) the installation directory
 #------------------------------------------------------------------------------
-    version("main"  , branch="main" , get_full_repo=True, submodules=True)
-    version("cmake" , branch="cmake", get_full_repo=True, submodules=True)
+    version("main" , branch="main", get_full_repo=True, submodules=True)
     # patch("elog-001.patch")
     def url_for_version(self, version):
-        url = "https://github.com/Mu2e/Stntuple/archive/refs/tags/{0}.tar.gz"
+        url = "https://github.com/pavel1murat/murat/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
 
     variant(
@@ -51,6 +50,7 @@ class Stntuple(CMakePackage):
 
     depends_on("cetmodules", type="build")
     depends_on("Offline")
+    depends_on("Stntuple")
 #------------------------------------------------------------------------------
 # P.Murat: leave it as is for now, as I only need to build w/o sqlite, everything
 #          else is OK

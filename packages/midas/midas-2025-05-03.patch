@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 12c31a34..06f63138 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,11 @@
+ message(STATUS "MIDAS: cmake version: " ${CMAKE_VERSION})
+ cmake_minimum_required(VERSION 3.14)
+ 
++set(CMAKE_C_COMPILER   "$ENV{SPACK_ENV}/.spack-env/view/bin/gcc")
++set(CMAKE_CXX_COMPILER "$ENV{SPACK_ENV}/.spack-env/view/bin/c++")
++
++message(STATUS "MIDAS: CMAKE_C_COMPILER : ${CMAKE_C_COMPILER}")
++
+ project(midas
+         DESCRIPTION "MIDAS Data Acquisition System")
+ include(GNUInstallDirs)

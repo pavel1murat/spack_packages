@@ -14,3 +14,11 @@ index 12c31a34..06f63138 100644
  project(midas
          DESCRIPTION "MIDAS Data Acquisition System")
  include(GNUInstallDirs)
+@@ -527,6 +532,7 @@ set(libsrc-c-compat
+ add_library(objlib OBJECT ${libsrc})
+ target_compile_features(objlib PUBLIC cxx_std_11)
+ target_include_directories(objlib PUBLIC $<BUILD_INTERFACE:${BUILD_INC_DIR}>)
++target_include_directories(objlib PUBLIC $ENV{SPACK_VIEW}/include)
+ target_compile_definitions(objlib PUBLIC ${XDEFINES})
+ target_compile_options(objlib PUBLIC ${XFLAGS})
+ set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)

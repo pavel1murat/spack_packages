@@ -27,14 +27,17 @@ class Midas(CMakePackage):
 # patch_001 corresponds to commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09"
 # patch_002 - to something more recent (development?)
 # midas-2025-04-01.patch : make sure MIDAS compiles with the spack-preferred compiler
+# https://bitbucket.org/tmidas/midas de28febf66a6b9d3d32a85337d3ccf46013270c7
 #------------------------------------------------------------------------------
     version("develop"   , branch="develop", get_full_repo=True, submodules=True)
 # 2025-02-06 : a snapshot to demonstrate spack confusion with finding the right include files
+    version("2025-12-04", branch="develop", commit="de28febf66a6b9d3d32a85337d3ccf46013270c7",get_full_repo=True, submodules=True)
     version("2025-05-03", branch="develop", commit="db1819ac2da87b55223bd3c404f9249ffa75d0b3",get_full_repo=True, submodules=True)
     version("2025-04-25", branch="develop", commit="5e5473e10eefe846d3e7de4b7f8cc4b14760106b",get_full_repo=True, submodules=True)
     version("2025-04-01", branch="develop", commit="13ad919a2d77c5af0f53120f615001d07a14766e",get_full_repo=True, submodules=True)
     version("2025-02-06", branch="develop", commit="85946c9476543efd8a25772df35c0e6956e8b68c",get_full_repo=True, submodules=True)
     version("3.01.00"   , branch="develop", commit="f254ebd60a23c6ee2d4870f3b6b5e8e95a8f1f09",get_full_repo=True, submodules=True)
+    patch("midas-2025-12-04.patch",when="@2025-12-04")
     patch("midas-2025-05-03.patch",when="@2025-05-03")
     patch("midas-2025-04-25.patch",when="@2025-04-25")
     patch("midas-2025-04-01.patch",when="@2025-04-01")

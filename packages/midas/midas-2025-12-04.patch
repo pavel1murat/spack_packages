@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4935b53a..4da00620 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,11 @@
+ message(STATUS "MIDAS: cmake version: " ${CMAKE_VERSION})
+ cmake_minimum_required(VERSION 3.14)
+ 
++set(CMAKE_C_COMPILER   "$ENV{SPACK_ENV}/.spack-env/view/bin/gcc")
++set(CMAKE_CXX_COMPILER "$ENV{SPACK_ENV}/.spack-env/view/bin/c++")
++
++message(STATUS "MIDAS: CMAKE_C_COMPILER : ${CMAKE_C_COMPILER}")
++
+ project(midas
+         DESCRIPTION "MIDAS Data Acquisition System")
+ include(GNUInstallDirs)
+@@ -532,6 +537,7 @@ set(libsrc-c-compat
+ # midas library shared sources for libmidas.a and libmidas-shared.so
+ add_library(objlib OBJECT ${libsrc})
+ target_include_directories(objlib PUBLIC $<BUILD_INTERFACE:${BUILD_INC_DIR}>)
++target_include_directories(objlib PUBLIC $ENV{SPACK_VIEW}/include)
+ target_compile_definitions(objlib PUBLIC ${XDEFINES})
+ target_compile_options(objlib PUBLIC ${XFLAGS})
+ set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)

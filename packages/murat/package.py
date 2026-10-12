@@ -49,8 +49,8 @@ class Murat(CMakePackage):
 #    depends_on("opencv"    , when="+opencv")
 
     depends_on("cetmodules", type="build")
-    depends_on("Offline")
-    depends_on("Stntuple")
+    depends_on("offline")
+    depends_on("stntuple")
 #------------------------------------------------------------------------------
 # P.Murat: leave it as is for now, as I only need to build w/o sqlite, everything
 #          else is OK

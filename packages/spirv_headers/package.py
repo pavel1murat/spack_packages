@@ -15,9 +15,9 @@ def sanitize_environments(env, *vars):
 class SpirvHeaders(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-    git = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-    url = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v1_04_00.tar.gz"
+    homepage = "https://github.com/KhronosGroup/SPIRV-Headers"
+    git = "https://github.com/KhronosGroup/SPIRV-Headers"
+    url = "https://github.com/KhronosGroup/SPIRV-HEaders/archive/refs/tags/v1_04_00.tar.gz"
 
     maintainers("community")
 

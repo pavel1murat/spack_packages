@@ -32,6 +32,8 @@ class SpirvLlvm(CMakePackage):
         url = "https://github.com/pavel1murat/daqana/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
 
+    depends_on("spirv_tools")
+
     variant(
         "cxxstd",
         default="20",

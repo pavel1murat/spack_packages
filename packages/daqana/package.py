@@ -41,8 +41,8 @@ class Daqana(CMakePackage):
     )
 
     depends_on("cetmodules", type="build")
-    depends_on("Offline")
-    depends_on("Stntuple")
+    depends_on("offline")
+    depends_on("stntuple")
     depends_on("tomlplusplus")
 
     def cmake_args(self):

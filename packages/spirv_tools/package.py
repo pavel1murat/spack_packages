@@ -15,9 +15,9 @@ def sanitize_environments(env, *vars):
 class SpirvTools(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-    git = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-    url = "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v1_04_00.tar.gz"
+    homepage = "https://github.com/KhronosGroup/SPIRV-Tools"
+    git = "https://github.com/KhronosGroup/SPIRV-Tools"
+    url = "https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v1_04_00.tar.gz"
 
     maintainers("community")
 
@@ -31,6 +31,8 @@ class SpirvTools(CMakePackage):
     def url_for_version(self, version):
         url = "https://github.com/pavel1murat/daqana/archive/refs/tags/{0}.tar.gz"
         return url.format(version)
+    
+    depends_on("spirv_headers")
 
     variant(
         "cxxstd",
@@ -41,14 +43,15 @@ class SpirvTools(CMakePackage):
     )
 
     def cmake_args(self):
-        args = [
+        headers_prefix = self.spec["spirv_headers"].prefix
+
+        return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
+            self.define("SPIRV-Headers_SOURCE_DIR", headers_prefix),
+            self.define("SPIRV_SKIP_EXECUTABLES", True),
+            self.define("SPIRV_SKIP_TESTS", True),
+            self.define("ENABLE_SPIRV_TOOLS_INSTALL", True),
         ]
-        if os.path.exists("CMakePresets.cmake"):
-            args.extend(["--preset", "default"])
-        else:
-            self.define("artdaq_core_OLD_STYLE_CONFIG_VARS", True)
-        return args
 
     def setup_run_environment(self, env):
         prefix = self.prefix
